@@ -6,14 +6,14 @@ import { loadDefaultKeypair } from "./keypair";
   const keypair = await loadDefaultKeypair();
   const commitment: Commitment = "confirmed";
   const connection = new Connection(
-    // "https://api.devnet.solana.com",
-    "https://api.testnet.solana.com",
+    "https://api.devnet.solana.com",
+    // "https://api.testnet.solana.com",
 
     commitment
   );
-  const token_decimals = 1_000_000;
+  const token_decimals = 1_000_000_000;
 
-  const mint = new PublicKey("4Y44ARt7PW4n15CdhWed3svQnJAwYy2uF4QvcJRjpErP");
+  const mint = new PublicKey("AqFPDnbBgnoEKrbr8iwKdv7tW5T5358QenxrMjcCQiwJ");
 
   try {
     const ata = await getOrCreateAssociatedTokenAccount(
@@ -23,9 +23,9 @@ import { loadDefaultKeypair } from "./keypair";
       keypair.publicKey
     );
 
-    console.log(`Your ata address: ${ata.address.toBase58()}`);
+    console.log(`======= Your ata address: ${ata.address.toBase58()} =======`);
 
-    const amountToMint = 100 * token_decimals;
+    const amountToMint = 1000 * token_decimals;
 
     const mintTx = await mintTo(
       connection,
@@ -36,7 +36,7 @@ import { loadDefaultKeypair } from "./keypair";
       amountToMint
     );
 
-    console.log(`Your mint txid: ${mintTx}`);
+    console.log(`======= Your mint txid: ${mintTx} =======`);
   } catch (error) {
     console.error(`Oops, something went wrong: ${error}`);
   }

@@ -6,8 +6,8 @@ import { loadDefaultKeypair } from "./keypair";
   const keypair = await loadDefaultKeypair();
   const commitment: Commitment = "confirmed";
   const connection = new Connection(
-    // "https://api.devnet.solana.com",
-    "https://api.testnet.solana.com",
+    "https://api.devnet.solana.com",
+    // "https://api.testnet.solana.com",
 
     commitment
   );
@@ -18,13 +18,12 @@ import { loadDefaultKeypair } from "./keypair";
       keypair,
       keypair.publicKey,
       null,
-      6
+      9
     );
-    console.log(`✅ Successfully created a mint: ${mint.toBase58()}`);
+    console.log(
+      `======= Successfully created a mint: ${mint.toBase58()} =======`
+    );
   } catch (e) {
-    console.error(`❌ Something went wrong:`, e);
+    console.error(`Something went wrong:`, e);
   }
 })();
-
-// Mint - 4Y44ARt7PW4n15CdhWed3svQnJAwYy2uF4QvcJRjpErP
-// Mint Testnet - 6CiFUN8SNBPMesyDtVotRZRxJQFTJ5R3XqVLxdYwqtsQ
